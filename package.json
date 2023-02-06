@@ -1,14 +1,22 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app that allows for notes to be written and saved via express.js.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Marwin Manlangit",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.18.1",
+    "inquirer": "^9.1.4",
+    "uuid": "^9.0.0",
+    "v1": "^1.0.0",
+    "v4": "^0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marwaynemclovin/express.js-note-taker",
   }
 }
