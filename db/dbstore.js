@@ -19,23 +19,23 @@ class dbstore {
 
     retrieveNotes() {
         return this.read().then(notes => {
-            let parsedNotes;
+            let notesResponse;
             try {
-                parsedNotes = [].concat(JSON.parse(notes));
+                notesResponse = [].concat(JSON.parse(notes));
             } catch (err) {
-                parsedNotes = [];
+                notesResponse = [];
             }
-            return parsedNotes;
+            return notesResponse;
         });
     }
 
     addNote(note) {
         const { title, text } = note;
         if (!title || !text) {
-            throw new Error('Both title and text can not be blank');
+            throw new Error('Cannot be blank');
         }
-        // Use UUID package to add unique IDs
-        const newNote = { title, text, id: uuidv1() };
+        // Unique ID
+        let newNote = { title, text, id: uuidv1() };
 
         // Retrieve Notes, add the new note, update notes
         return this.retrieveNotes()
@@ -44,11 +44,11 @@ class dbstore {
             .then(() => newNote);
     }
 
-    // Delete Note function - BONUS
+    // Delete Note function
     deleteNote(id) {
         return this.retrieveNotes()
-            .then(notes => notes.filter(note => note.id !== id))
-            .then(filteredNotes => this.write(filteredNotes));
+            .then((notes) => notes.filter((note) => note.id !== id))
+            .then((filteredNotes) => this.write(filteredNotes));
     }
 }
 
